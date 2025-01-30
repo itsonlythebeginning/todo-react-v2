@@ -25,40 +25,13 @@ function TodoShow({task}) {
     }
 
 
-
-    let currentDisplay
-
-    if (task.isVisibility) {
-        currentDisplay = "flex"
-    }
-    else {
-        currentDisplay = "none"
-    }
-
-
-    let currentOpacity
-
-    if (task.done) {
-        currentOpacity = 0.35
-    }
-    else {
-        currentOpacity = 1
-    }
-
+    let currentDisplay = task.isVisibility ? "flex" : "none"
+    let currentOpacity = task.done ? 0.35 : 1
 
 
     const activeButton = <button onClick={handleDoneClick} className="todoShow__task-actions-done todoShow__task-actions-button todoShow__task-actions-button_active">!</button>
     const doneButton = <button onClick={handleDoneClick} className="todoShow__task-actions-done todoShow__task-actions-button todoShow__task-actions-button_done">✓</button>
-
-    let renderedButton
-
-    if (task.done) {
-        renderedButton = doneButton
-    }
-    else {
-        renderedButton = activeButton
-    }
-
+    let renderedButton = task.done ? doneButton : activeButton
 
 
     let renderedContent
