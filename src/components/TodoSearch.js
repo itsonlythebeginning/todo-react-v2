@@ -1,5 +1,5 @@
 import "./TodoSearch.css"
-import {useState, useContext} from "react";
+import {useContext} from "react";
 import TasksContext from "../context/TasksContext";
 
 
@@ -7,12 +7,10 @@ import TasksContext from "../context/TasksContext";
 
 function TodoSearch() {
 
-    const {showOnlyDoneTasks, showOnlyActiveTasks, showAllTasks, searchTodoByTerm} = useContext(TasksContext)
+    const {showOnlyDoneTasks, showOnlyActiveTasks, showAllTasks, term, changeValue} = useContext(TasksContext)
 
-    const [term, setTerm] = useState("")
     const handleChange = (event) => {
-        setTerm(event.target.value)
-        searchTodoByTerm(event.target.value)
+        changeValue(event.target.value)
     }
     const handleSubmit = (event) => {
         event.preventDefault()
