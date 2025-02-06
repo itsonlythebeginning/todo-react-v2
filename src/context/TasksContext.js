@@ -11,8 +11,7 @@ function Provider({children}) {
 
     const [activeCount, setActiveCount] = useState(0)
     const [doneCount, setDoneCount] = useState(0)
-
-
+    const [term, setTerm] = useState("")
 
 
 
@@ -200,22 +199,8 @@ function Provider({children}) {
 
 
 
-    const searchTodoByTerm = (term) => {
-
-        const updatedArr = tasks.map(function (task) {
-
-            if (task.title.toLowerCase().indexOf(term.toLowerCase()) === -1) {
-                return {...task, isVisibility: false}
-            }
-
-            else {
-                return {...task, isVisibility: true}
-            }
-
-        })
-
-        setTasks(updatedArr)
-
+    const changeValue = (value) => {
+        setTerm(value)
     }
 
 
@@ -232,8 +217,9 @@ function Provider({children}) {
         showAllTasks: showAllTasks,
         activeCount: activeCount,
         doneCount: doneCount,
-        searchTodoByTerm:searchTodoByTerm,
-        stableFetchTasks: stableFetchTasks
+        stableFetchTasks: stableFetchTasks,
+        changeValue,
+        term
     }
 
 
