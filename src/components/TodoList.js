@@ -7,7 +7,7 @@ import TasksContext from "../context/TasksContext";
 function TodoList() {
 
 
-    const {tasks, term} = useContext(TasksContext)
+    const {tasks, term, showTasks} = useContext(TasksContext)
 
     const renderedTasks = tasks.map(function (task, index) {
 
@@ -16,8 +16,25 @@ function TodoList() {
                 return <TodoShow task={task} key={task.id}/>
             }
         }
+
         else {
-            return <TodoShow task={task} key={task.id}/>
+
+            if (showTasks === "all") {
+                return <TodoShow task={task} key={task.id}/>
+            }
+
+            else if (showTasks === "active") {
+                if (!task.done) {
+                    return <TodoShow task={task} key={task.id}/>
+                }
+            }
+
+            else if (showTasks === "done") {
+                if (task.done) {
+                    return <TodoShow task={task} key={task.id}/>
+                }
+            }
+
         }
 
     })
