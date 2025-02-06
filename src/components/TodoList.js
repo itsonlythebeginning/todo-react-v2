@@ -7,11 +7,19 @@ import TasksContext from "../context/TasksContext";
 function TodoList() {
 
 
-    const {tasks} = useContext(TasksContext)
-
+    const {tasks, term} = useContext(TasksContext)
 
     const renderedTasks = tasks.map(function (task, index) {
-        return <TodoShow task={task} key={task.id}/>
+
+        if (term) {
+            if (task.title.toLowerCase().indexOf(term.toLowerCase()) !== -1) {
+                return <TodoShow task={task} key={task.id}/>
+            }
+        }
+        else {
+            return <TodoShow task={task} key={task.id}/>
+        }
+
     })
 
 
