@@ -3,14 +3,12 @@
     {
       "id": "e43a",
       "title": "Send Email",
-      "done": false,
-      "isVisibility": true
+      "done": false
     },
     {
       "id": "c9b2",
       "title": "Walk the dog",
-      "done": true,
-      "isVisibility": true
+      "done": true
     }
   ]
 }
