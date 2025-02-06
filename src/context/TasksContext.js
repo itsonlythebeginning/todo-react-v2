@@ -13,6 +13,7 @@ function Provider({children}) {
     const [doneCount, setDoneCount] = useState(0)
     const [term, setTerm] = useState("")
 
+    const [showTasks, setShowTasks] = useState("all")
 
 
     const fetchTasks = async () => {
@@ -52,7 +53,7 @@ function Provider({children}) {
     const addTodoTask = async (title) => {
 
         const response =  await axios.post("http://localhost:3001/tasks",
-            {title: title, done: false, isVisibility: true}
+            {title: title, done: false}
         )
 
         setActiveCount(activeCount+1)
@@ -148,53 +149,21 @@ function Provider({children}) {
 
 
     const showOnlyDoneTasks = () => {
-
-        const updatedArr = tasks.map(function (task) {
-
-            if (task.done) {
-                return {...task, isVisibility: false}
-            }
-            else {
-                return {...task, isVisibility: true}
-            }
-
-        })
-
-        setTasks(updatedArr)
-
+        setShowTasks("done")
     }
 
 
 
 
     const showOnlyActiveTasks = () => {
-
-        const updatedArr = tasks.map(function (task) {
-
-            if (task.done) {
-                return {...task, isVisibility: true}
-            }
-            else {
-                return {...task, isVisibility: false}
-            }
-
-        })
-
-        setTasks(updatedArr)
-
+        setShowTasks("active")
     }
 
 
 
 
     const showAllTasks = () => {
-
-        const updatedArr = tasks.map(function (task) {
-            return {...task, isVisibility: true}
-        })
-
-        setTasks(updatedArr)
-
+        setShowTasks("all")
     }
 
 
@@ -219,7 +188,8 @@ function Provider({children}) {
         doneCount: doneCount,
         stableFetchTasks: stableFetchTasks,
         changeValue,
-        term
+        term,
+        showTasks
     }
 
 
