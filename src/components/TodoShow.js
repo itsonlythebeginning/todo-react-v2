@@ -25,7 +25,6 @@ function TodoShow({task}) {
     }
 
 
-    let currentDisplay = task.isVisibility ? "flex" : "none"
     let currentOpacity = task.done ? 0.35 : 1
 
 
@@ -42,7 +41,7 @@ function TodoShow({task}) {
 
     else {
         renderedContent =
-            <div className="todoShow__task" style={{display: currentDisplay}}>
+            <div className="todoShow__task">
                 <h2 className="todoShow__task-title" style={{opacity: currentOpacity}}>{task.title}</h2>
 
                 <div className="todoShow__task-actions">
